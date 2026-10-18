@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROPOSTA TÉCNICA - NORTBRAS ENERGIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; -webkit-print-color-adjust: exact; margin: 0; padding: 0; }
+            .page { 
+                margin: 0 !important; 
+                border: none !important; 
+                box-shadow: none !important; 
+                page-break-after: always; 
+                height: 296mm; 
+                width: 210mm;
+                overflow: visible !important;
+            }
+        }
+        body { background-color: #f0f4f8; }
+        .page { 
+            background: #ffffff; width: 210mm; min-height: 297mm; margin: 20px auto; 
+            padding: 30px 40px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-left: 15px solid #1e3a8a; box-sizing: border-box;
+        }
+        .bg-vibrante { background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%); }
+        .card-kit { 
+            background: white; border-radius: 1.5rem; border: 1px solid #e2e8f0;
+            padding: 20px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .img-kit { height: 90px; object-fit: contain; margin: 0 auto 10px; }
+        /* Logo ampliada */
+        .img-logo { max-height: 190px; width: auto; max-width: 420px; object-fit: contain; margin: 0 auto; }
+    </style>
+</head>
+<body class="font-sans text-slate-800">
+
+    <div class="max-w-4xl mx-auto no-print bg-white p-10 my-10 rounded-[2rem] shadow-2xl border border-blue-100">
+        <h2 class="text-3xl font-black text-blue-900 mb-8 uppercase italic flex items-center gap-3">
+            <i class="fas fa-solar-panel text-blue-600"></i> Gerador Nortbras - On-Grid
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="text" id="f_nome" placeholder="Nome do Cliente" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-600">
+            <input type="text" id="f_cpf" placeholder="CPF/CNPJ" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
+            <input type="text" id="f_endereco" placeholder="Endereço da Instalação" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
+            <input type="text" id="f_vendedor" placeholder="Nome do Vendedor / Consultor(a)" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none border-blue-200">
+            <input type="number" id="f_consumo" placeholder="Consumo Médio (kWh) - Opcional" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
+            <input type="number" id="f_fatura" placeholder="Valor da Fatura Hoje (R$) *" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
+            <input type="number" id="f_valor_kit" placeholder="Valor Manual do Kit (R$) - Opcional" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none border-blue-200">
+            
+            <select id="f_marca" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
+                <option value="HUAWEI">Huawei Premium</option>
+                <option value="solis">Solis Gold</option>
+                <option value="solplanete">Solplanet</option>
+            </select>
+            <button onclick="gerarProposta()" class="md:col-span-2 bg-blue-900 text-white font-black py-5 rounded-2xl hover:bg-blue-800 transition-all uppercase text-xl shadow-lg cursor-pointer">
+                Gerar Proposta Profissional Azul ⚡
+            </button>
+        </div>
+    </div>
+
+    <div id="renderArea" class="hidden">
+        
+        <!-- PÁGINA 1: CAPA E RESUMO INSTITUCIONAL -->
+        <div class="page bg-vibrante flex flex-col items-center justify-between">
+            <div class="w-full flex justify-center pt-2">
+                <!-- Logotipo Visual Oficial Nortbras com Imagem Ampliada -->
+                <div class="flex flex-col items-center justify-center w-full">
+                    <img src="logo_nortbras.jng.html.jpeg" alt="Nortbras Energia Logo" class="img-logo rounded-2xl shadow-xl border-2 border-amber-400" onerror="this.src='logo.png'">
+                </div>
+            </div>
+
+            <div class="text-center my-1">
+                <h1 class="text-3xl font-black text-blue-900 tracking-tighter uppercase leading-[0.9]">
+                    Projeto de <span class="text-blue-600 italic">Energia Solar</span>
+                </h1>
+                <p class="mt-1 text-blue-900 font-bold uppercase tracking-widest text-[9px] italic">Sistema ONGRID • No Campo e na Cidade</p>
+            </div>
+
+            <!-- ESCADA DE SOLUÇÕES NORTBRAS -->
+            <div class="w-full space-y-1 px-2 my-1">
+                <p class="text-[9.5px] font-black text-blue-900 uppercase tracking-widest text-center italic mb-1">
+                    <i class="fas fa-layer-group text-blue-600 mr-1"></i> Nossa Solução Completa: Do Projeto ao Pós-Venda
+                </p>
+
+                <!-- Degrau 1 -->
+                <div class="bg-white p-2 rounded-xl border-l-4 border-blue-900 shadow-sm flex items-center gap-3">
+                    <div class="bg-blue-100 text-blue-900 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0">1</div>
+                    <div>
+                        <h4 class="text-[9.5px] font-black text-blue-900 uppercase italic">Projetos Elétricos Especializados</h4>
+                        <p class="text-[8px] text-slate-600 leading-tight">Soluções sob medida para o campo e a cidade, garantindo máxima segurança técnica.</p>
+                    </div>
+                </div>
+
+                <!-- Degrau 2 -->
+                <div class="bg-white p-2 rounded-xl border-l-4 border-blue-700 shadow-sm flex items-center gap-3">
+                    <div class="bg-blue-100 text-blue-800 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0">2</div>
+                    <div>
+                        <h4 class="text-[9.5px] font-black text-blue-900 uppercase italic">Instalações Elétricas & Geradores</h4>
+                        <p class="text-[8px] text-slate-600 leading-tight">Venda, dimensionamento e execução de geradores de energia e infraestrutura elétrica robusta.</p>
+                    </div>
+                </div>
+
+                <!-- Degrau 3 -->
+                <div class="bg-white p-2 rounded-xl border-l-4 border-blue-600 shadow-sm flex items-center gap-3">
+                    <div class="bg-blue-100 text-blue-700 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0">3</div>
+                    <div>
+                        <h4 class="text-[9.5px] font-black text-blue-900 uppercase italic">Execução & Financiamento Parceiro</h4>
+                        <p class="text-[8px] text-slate-600 leading-tight">Instalação certificada e facilidade de pagamento com linhas de crédito em bancos parceiros.</p>
+                    </div>
+                </div>
+
+                <!-- Degrau 4 (Destaque Manutenção) -->
+                <div class="bg-amber-50 p-2 rounded-xl border-l-4 border-amber-500 shadow-sm flex items-center gap-3 border border-amber-200">
+                    <div class="bg-amber-100 text-amber-800 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0"><i class="fas fa-tools text-[10px]"></i></div>
+                    <div>
+                        <h4 class="text-[9.5px] font-black text-amber-900 uppercase italic">Manutenção Preventiva e Corretiva</h4>
+                        <p class="text-[8px] text-amber-900 leading-tight font-medium">Suporte especializado para assegurar a alta performance e longevidade do seu sistema.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APRESENTADO PARA -->
+            <div class="w-full bg-white/90 p-3.5 rounded-[2rem] border-2 border-blue-100 shadow-md my-1">
+                <p class="text-[8.5px] font-bold text-blue-600 uppercase tracking-widest mb-0.5 italic">Apresentado para:</p>
+                <h2 id="resNome" class="text-2xl font-black text-slate-800 uppercase italic leading-tight">NOME DO CLIENTE</h2>
+                <p id="resCpf" class="text-slate-500 font-bold text-[9.5px] mt-0.5">CPF: 000.000.000-00</p>
+                <p id="resEndereco" class="text-slate-400 text-[9px] mt-0.5 uppercase italic font-medium">Endereço: Não Informado</p>
+                
+                <div class="grid grid-cols-4 gap-1.5 mt-2 pt-2 border-t-2 border-slate-50 text-center">
+                    <div><p class="text-[7.5px] text-slate-400 font-bold uppercase">Consumo</p><b id="resConsumo" class="text-xs text-blue-900">0 kWh</b></div>
+                    <div><p class="text-[7.5px] text-slate-400 font-bold uppercase">Potência</p><b id="resPot" class="text-xs text-blue-900">0.00 kWp</b></div>
+                    <div><p class="text-[7.5px] text-slate-400 font-bold uppercase">Geração</p><b id="resGerCapa" class="text-xs text-blue-900">0 kWh</b></div>
+                    <div><p class="text-[7.5px] text-slate-400 font-bold uppercase">Área (Placas)</p><b id="resArea" class="text-xs text-blue-900">0 m²</b></div>
+                </div>
+            </div>
+
+            <!-- Endereço da Empresa no Rodapé da Capa -->
+            <div class="text-center pt-1">
+                <p class="text-[8.5px] font-bold text-blue-900 uppercase tracking-wider">
+                    <i class="fas fa-map-marker-alt text-blue-600 mr-1"></i> Rua da Paz, Jardim Planalto - Novo Progresso, Pará
+                </p>
+                <p class="text-[8px] font-black text-blue-900 tracking-[0.3em] uppercase opacity-50 mt-0.5">Nortbras Energia • Soluções em Energia</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: COMPOSIÇÃO TÉCNICA -->
+        <div class="page flex flex-col">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-black text-blue-900 uppercase italic border-l-8 border-blue-900 pl-4">Composição Técnica</h2>
+                <span class="text-blue-900 font-black text-sm uppercase italic">Nortbras Energia</span>
+            </div>
+            <div id="gridMateriais" class="grid grid-cols-2 gap-6 flex-grow"></div>
+            <div id="alertaUsinaBox" class="hidden mb-4 p-4 bg-amber-50 border border-amber-300 text-amber-900 text-xs rounded-2xl italic font-bold"></div>
+            <div class="mt-8 p-10 bg-blue-900 rounded-[3rem] text-white flex justify-between items-center shadow-2xl">
+                <div><h4 class="text-blue-200 font-black uppercase italic text-sm tracking-widest">Investimento Total do Kit</h4><p class="text-[10px] opacity-60 italic">Tecnologia Ongrid Instalada e Homologada</p></div>
+                <b class="text-4xl text-white" id="resTotal">R$ 0,00</b>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: VIABILIDADE E COMPARATIVOS FINANCEIROS -->
+        <div class="page flex flex-col bg-vibrante">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-black text-blue-900 uppercase italic">Viabilidade e Comparativos</h2>
+                <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full uppercase italic"><i class="fas fa-handshake mr-1"></i> Financiamento Bancário Disponível</span>
+            </div>
+            
+            <div class="bg-white p-3 rounded-[2rem] border-2 border-blue-900 shadow-lg mb-3 flex items-center gap-5 relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 bg-blue-900 text-white px-8 py-2 rotate-12 font-black text-[10px] uppercase">Nova Fatura</div>
+                <div class="bg-blue-900 text-white p-3 rounded-2xl">
+                    <i class="fas fa-file-invoice-dollar text-lg"></i>
+                </div>
+                <div>
+                    <h4 class="font-black text-blue-900 uppercase text-xs italic">Valor da Nova Fatura Estimada</h4>
+                    <p class="text-base font-black text-blue-700" id="resNovaFatura">R$ 0,00/mês</p>
+                    <p class="text-[9px] text-slate-500 leading-tight italic">Cálculo: (Consumo Total em kWh × 58%) × 0,56</p>
+                </div>
+            </div>
+
+            <!-- Quadros de Comparativos -->
+            <div class="grid grid-cols-2 gap-3 mb-3">
+                <div class="bg-emerald-50 p-3 rounded-3xl border border-emerald-200 text-center shadow-sm">
+                    <p class="text-[9px] font-black text-emerald-600 uppercase italic">Economia à Vista (1 Ano)</p>
+                    <b class="text-base text-emerald-700" id="resEcoVistaAnual">R$ 0,00</b>
+                </div>
+                <div class="bg-emerald-100 p-3 rounded-3xl border border-emerald-300 text-center shadow-sm">
+                    <p class="text-[9px] font-black text-emerald-800 uppercase italic">Economia à Vista (48 Meses / 4 Anos)</p>
+                    <b class="text-base text-emerald-900" id="resEcoVista4Anos">R$ 0,00</b>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 mb-3">
+                <div class="bg-blue-50 p-3 rounded-3xl border border-blue-200 text-center shadow-sm">
+                    <p class="text-[9px] font-black text-blue-600 uppercase italic">Economia Financiada (48 Meses)</p>
+                    <b class="text-base text-blue-900" id="resEcoFinanc4Anos">R$ 0,00</b>
+                    <p class="text-[8px] text-blue-600 mt-0.5">(Fatura - (Parcela 48x + Nova Fatura)) × 48</p>
+                </div>
+                <div class="bg-amber-50 p-3 rounded-3xl border border-amber-200 text-center shadow-sm">
+                    <p class="text-[9px] font-black text-amber-700 uppercase italic">Custo sem Solar (48m c/ Reajuste 15%)</p>
+                    <b class="text-base text-amber-900" id="resCustoSemSolarReajuste">R$ 0,00</b>
+                    <p class="text-[8px] text-amber-800 mt-0.5">Fatura × 48 meses + 15% de reajuste</p>
+                </div>
+            </div>
+
+            <p class="font-black text-[10px] text-blue-900 uppercase tracking-widest mb-1.5 ml-2 italic underline">Simulação de Parcelamento com Bancos Parceiros (24x a 60x):</p>
+            <div id="resFinan" class="grid grid-cols-2 gap-2.5 mb-3"></div>
+
+            <div class="mt-auto bg-white p-5 rounded-[2.5rem] border-t-8 border-blue-900 shadow-xl">
+                <div class="grid grid-cols-2 gap-10 text-center">
+                    <div><div class="h-[1px] bg-slate-200 mb-2"></div><p class="text-[10px] font-black uppercase italic" id="assNome">CLIENTE</p></div>
+                    <div><div class="h-[1px] bg-blue-900 mb-2"></div><p class="text-[10px] font-black uppercase italic" id="resVendedor">VAGNER CRISTO</p><p class="text-[8px] text-blue-600 font-bold italic underline uppercase">Consultor(a) / Resp. Nortbras</p></div>
+                </div>
+            </div>
+            <button onclick="window.print()" class="no-print mt-3 w-full bg-blue-900 text-white py-3.5 font-black uppercase rounded-3xl shadow-2xl text-base italic hover:bg-blue-800 transition-all cursor-pointer">Imprimir Proposta Nortbras</button>
+        </div>
+    </div>
+
+    <script>
+        function gerarProposta() {
+            const nome = document.getElementById('f_nome').value;
+            const cpf = document.getElementById('f_cpf').value;
+            const endereco = document.getElementById('f_endereco').value;
+            const vendedor = document.getElementById('f_vendedor').value;
+            const inputConsumo = parseFloat(document.getElementById('f_consumo').value);
+            const fatura = parseFloat(document.getElementById('f_fatura').value);
+            const inputValorKit = parseFloat(document.getElementById('f_valor_kit').value);
+            const marca = document.getElementById('f_marca').value;
+
+            if(!fatura || isNaN(fatura) || fatura <= 0) {
+                alert("Vagner, por favor preencha o valor da fatura atual!");
+                return;
+            }
+
+            // 1. TARIFA E CONSUMO (kWh)
+            const TARIFA = 1.42;
+            const kwhTotal = (!inputConsumo || isNaN(inputConsumo)) ? (fatura / TARIFA) : inputConsumo;
+
+            // 2. CÁLCULO DE PAINÉIS SOLARES
+            let p = Math.ceil((kwhTotal / 30) / 1.92);
+            if (fatura >= 1000 && p < 14) p = 14; 
+
+            // CÁLCULO DA ÁREA NECESSÁRIA (Cada placa mede 2.30m x 1.15m = 2.645 m²)
+            const areaTotalM2 = (p * 2.30 * 1.15).toFixed(1);
+
+            // 3. TABELA DE PREÇOS BASE E PRECIFICAÇÃO PROGRESSIVA
+            const PRECO_BASE_HASTA_10 = 1471.50; 
+            const PRECO_ADICIONAL_PLACA = 1308.00; 
+
+            let precoCalculado = 0;
+            if (fatura > 9000) {
+                precoCalculado = p * 1286.20;
+            } else if (fatura > 5600) {
+                precoCalculado = p * 1253.50;
+            } else if (p > 10) {
+                precoCalculado = (10 * PRECO_BASE_HASTA_10) + ((p - 10) * PRECO_ADICIONAL_PLACA);
+            } else {
+                precoCalculado = p * PRECO_BASE_HASTA_10;
+            }
+
+            if (fatura > 9000) {
+                precoCalculado = precoCalculado * 0.95;
+            }
+
+            const preco = (inputValorKit && !isNaN(inputValorKit) && inputValorKit > 0) ? inputValorKit : precoCalculado;
+
+            // 4. POTÊNCIA DO INVERSOR
+            let inv = Math.round((p * 585) / 1000);
+            let alertaUsina = "";
+
+            if ((p >= 128 && p <= 175) || (fatura >= 10100 && fatura <= 13800)) {
+                inv = 75;
+            } else if (p > 175 || fatura > 13800) {
+                alertaUsina = "Atenção: Usinas com inversores acima de 75 kW precisam estar enquadradas na Classe B Optante ou em outro modelo de compensação de energia injetada.";
+            }
+
+            // 5. GERAÇÃO MENSAL
+            const ger = ((p * 585 * 4.5 * 30) / 1000) * 0.82;
+
+            // 6. NOVA FATURA ESTIMADA
+            const novaFaturaEstimada = (kwhTotal * 0.58) * 0.56;
+            const econMensal = fatura - novaFaturaEstimada;
+
+            // 7. COMPARATIVOS FINANCEIROS
+            const economiaVistaAnual = econMensal * 12;
+            const economiaVista4Anos = econMensal * 48;
+
+            const taxaJuros = 0.021;
+            const valorFinanciado = preco * 1.05;
+            const parcela48x = valorFinanciado * ((taxaJuros * Math.pow(1 + taxaJuros, 48)) / (Math.pow(1 + taxaJuros, 48) - 1));
+
+            const custoMensalFinanciado = parcela48x + novaFaturaEstimada;
+            const diferencaMensalFinanciamento = fatura - custoMensalFinanciado;
+            const economiaFinanciada4Anos = diferencaMensalFinanciamento * 48;
+
+            const custoSemSolarReajuste = (fatura * 48) * 1.15;
+
+            const potKwp = (p * 585 / 1000).toFixed(2);
+
+            // DISTRIBUIÇÃO PROPORCIONAL DOS COMPONENTES
+            const vPaineis = preco * 0.40;
+            const vInversor = preco * 0.25;
+            const vEstrutura = preco * 0.10;
+            const vStringbox = preco * 0.10;
+            const vEngenharia = preco * 0.15;
+
+            // Preenchimento dos dados visuais
+            document.getElementById('resNome').innerText = (nome || "Cliente Nortbras").toUpperCase();
+            document.getElementById('resCpf').innerText = "CPF/CNPJ: " + (cpf || "Não Informado");
+            document.getElementById('resEndereco').innerText = "Endereço: " + (endereco || "Não Informado");
+            document.getElementById('assNome').innerText = (nome || "CLIENTE").toUpperCase();
+            document.getElementById('resVendedor').innerText = (vendedor || "Nortbras Energia").toUpperCase();
+            document.getElementById('resConsumo').innerText = Math.round(kwhTotal) + " kWh";
+            document.getElementById('resPot').innerText = potKwp + " kWp";
+            document.getElementById('resGerCapa').innerText = Math.round(ger) + " kWh";
+            document.getElementById('resArea').innerText = areaTotalM2 + " m²";
+            document.getElementById('resTotal').innerText = preco.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+            document.getElementById('resNovaFatura').innerText = novaFaturaEstimada.toLocaleString('pt-BR', {style:'currency', currency:'BRL'}) + " / mês";
+            
+            document.getElementById('resEcoVistaAnual').innerText = economiaVistaAnual.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+            document.getElementById('resEcoVista4Anos').innerText = economiaVista4Anos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+            document.getElementById('resEcoFinanc4Anos').innerText = economiaFinanciada4Anos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+            document.getElementById('resCustoSemSolarReajuste').innerText = custoSemSolarReajuste.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+
+            const boxAlerta = document.getElementById('alertaUsinaBox');
+            if(alertaUsina) {
+                boxAlerta.innerText = alertaUsina;
+                boxAlerta.classList.remove('hidden');
+            } else {
+                boxAlerta.classList.add('hidden');
+            }
+
+            document.getElementById('gridMateriais').innerHTML = `
+                <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 585W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b>${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b>${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Kit Proteção Ongrid</p><b>${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="col-span-2 bg-blue-50 p-4 rounded-3xl border flex justify-between items-center px-10 italic border-blue-200"><h4 class="text-blue-900 font-black text-xs uppercase italic">Engenharia e Instalação Ongrid</h4><b class="text-xl text-blue-900">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+            `;
+
+            let finanHTML = '';
+            [24, 36, 48, 60].forEach(m => {
+                let taxa = 0.021;
+                let pmt = (preco * 1.05) * ( (taxa * Math.pow(1+taxa, m)) / (Math.pow(1+taxa, m) - 1) );
+                let custoSemSolarPrazo = (fatura * m) * 1.15;
+                
+                finanHTML += `
+                    <div class="bg-white p-3 rounded-2xl border-2 border-blue-100 shadow-md">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span class="text-xs font-black text-blue-900 uppercase italic">${m}x FINANCIADO:</span>
+                            <span class="text-sm font-black text-blue-700">${pmt.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}/mês</span>
+                        </div>
+                        <div class="bg-amber-50 p-2 rounded-xl border border-amber-200 flex justify-between items-center">
+                            <span class="text-[9px] font-black text-amber-900 uppercase italic">Custo sem Solar (${m}m + 15%):</span>
+                            <b class="text-xs font-black text-amber-700">${custoSemSolarPrazo.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b>
+                        </div>
+                    </div>`;
+            });
+            document.getElementById('resFinan').innerHTML = finanHTML;
+            document.getElementById('renderArea').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
