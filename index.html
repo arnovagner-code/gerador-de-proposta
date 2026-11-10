@@ -33,16 +33,23 @@
         }
         .img-kit { height: 60px; object-fit: contain; margin: 0 auto 4px; }
         
-        /* LOGO ESTICADA DE PONTA A PONTA, PREENCHENDO TODO O ESPAÇO COM PERFEIÇÃO */
+        /* MOLDURA PERFEITA PROPORCIONAL MOSTRANDO A IMAGEM INTEIRA */
+        .img-logo-container {
+            width: 100%;
+            background-color: #0b1329;
+            border-radius: 1.2rem;
+            border: 3px solid #fbbf24;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .img-logo { 
             width: 100%; 
-            height: 185px; 
-            object-fit: cover; 
-            object-position: center;
-            border-radius: 1.2rem; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-            border: 3px solid #fbbf24;
+            height: auto; 
             display: block;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -76,9 +83,11 @@
         
         <!-- PÁGINA 1: CAPA E RESUMO INSTITUCIONAL -->
         <div class="page bg-vibrante flex flex-col items-center justify-between">
-            <!-- LOGO DE PONTA A PONTA SEM BARRAS -->
+            <!-- LOGO COM A PROPORÇÃO IDEAL E INTEIRA -->
             <div class="w-full pt-0">
-                <img src="nort-logo.jpg.jpg" alt="Nortbras Energia Logo" class="img-logo" onerror="this.src='logo.png'">
+                <div class="img-logo-container">
+                    <img src="nort-logo.jpg.jpg" alt="Nortbras Energia Logo" class="img-logo" onerror="this.src='logo.png'">
+                </div>
             </div>
 
             <!-- TÍTULOS COM FONTES GRANDES E DESTACADAS -->
