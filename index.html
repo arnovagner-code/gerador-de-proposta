@@ -261,7 +261,8 @@
                 alertaUsina = "Atenção: Usinas com inversores acima de 75 kW precisam estar enquadradas na Classe B Optante ou em outro modelo de compensação de energia injetada.";
             }
 
-            const ger = ((p * 610 * 4.5 * 30) / 1000) * 0.82;
+            // Geração mensal corrigida para aplicar exatamente os 20% de perda (fator 0.80)
+            const ger = ((p * 610 * 4.5 * 30) / 1000) * 0.80;
 
             const novaFaturaEstimada = (kwhTotal * 0.58) * 0.56;
             const econMensal = fatura - novaFaturaEstimada;
@@ -281,7 +282,6 @@
 
             const potKwp = (p * 610 / 1000).toFixed(2);
 
-            // DISTRIBUIÇÃO PROPORCIONAL DOS 6 ITENS
             const vPaineis = preco * 0.35;
             const vInversor = preco * 0.25;
             const vEstrutura = preco * 0.10;
@@ -314,7 +314,7 @@
                 boxAlerta.classList.add('hidden');
             }
 
-            // Grade contendo exatamente os 6 itens separados (com imagens e valores individuais)
+            // Grade contendo os 6 itens devidamente separados
             document.getElementById('gridMateriais').innerHTML = `
                 <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 610W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b>${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
