@@ -32,8 +32,17 @@
             padding: 10px 15px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         .img-kit { height: 60px; object-fit: contain; margin: 0 auto 4px; }
-        /* Logo da capa com destaque máximo e elegante */
-        .img-logo { max-height: 230px; width: auto; max-width: 95%; object-fit: contain; margin: 0 auto; }
+        
+        /* Logo ajustada para ocupar de lado a lado da página com grande destaque */
+        .img-logo { 
+            width: 100%; 
+            height: auto; 
+            max-height: 220px; 
+            object-fit: cover; 
+            border-radius: 1.5rem; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
+            border: 3px solid #fbbf24;
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800">
@@ -66,77 +75,76 @@
         
         <!-- PÁGINA 1: CAPA E RESUMO INSTITUCIONAL -->
         <div class="page bg-vibrante flex flex-col items-center justify-between">
-            <div class="w-full flex justify-center pt-4">
-                <!-- Logotipo Principal Atualizado com Alta Evidência -->
-                <div class="flex flex-col items-center justify-center w-full">
-                    <img src="nort-logo.jpg.jpg" alt="Nortbras Energia Logo" class="img-logo rounded-3xl shadow-2xl border-4 border-amber-400" onerror="this.src='logo.png'">
-                </div>
+            <!-- LOGO DE LADO A LADO DA PÁGINA -->
+            <div class="w-full pt-1">
+                <img src="nort-logo.jpg.jpg" alt="Nortbras Energia Logo" class="img-logo" onerror="this.src='logo.png'">
             </div>
 
             <div class="text-center my-1">
-                <h1 class="text-3xl font-black text-blue-900 tracking-tighter uppercase leading-[0.9]">
+                <h1 class="text-4xl font-black text-blue-900 tracking-tighter uppercase leading-[0.9]">
                     Projeto de <span class="text-blue-600 italic">Energia Solar</span>
                 </h1>
-                <p class="mt-1 text-blue-900 font-bold uppercase tracking-widest text-[10px] italic">Sistema ONGRID • No Campo e na Cidade</p>
+                <p class="mt-1 text-blue-900 font-bold uppercase tracking-widest text-xs italic">Sistema ONGRID • No Campo e na Cidade</p>
             </div>
 
-            <div class="w-full space-y-1 px-2 my-1">
-                <p class="text-[10px] font-black text-blue-900 uppercase tracking-widest text-center italic mb-1">
+            <div class="w-full space-y-1.5 px-1 my-1">
+                <p class="text-[11px] font-black text-blue-900 uppercase tracking-widest text-center italic mb-1">
                     <i class="fas fa-layer-group text-blue-600 mr-1"></i> Nossa Solução Completa: Do Projeto ao Pós-Venda
                 </p>
 
-                <div class="bg-white p-2 rounded-xl border-l-4 border-blue-900 shadow-sm flex items-center gap-3">
-                    <div class="bg-blue-100 text-blue-900 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0">1</div>
+                <div class="bg-white p-2.5 rounded-xl border-l-4 border-blue-900 shadow-sm flex items-center gap-3">
+                    <div class="bg-blue-100 text-blue-900 w-7 h-7 rounded-lg flex items-center justify-center font-black text-xs shrink-0">1</div>
                     <div>
-                        <h4 class="text-[10px] font-black text-blue-900 uppercase italic">Projetos Elétricos Especializados</h4>
-                        <p class="text-[8.5px] text-slate-600 leading-tight">Soluções sob medida para o campo e a cidade, garantindo máxima segurança técnica.</p>
+                        <h4 class="text-[11px] font-black text-blue-900 uppercase italic">Projetos Elétricos Especializados</h4>
+                        <p class="text-[9.5px] text-slate-600 leading-tight">Soluções sob medida para o campo e a cidade, garantindo máxima segurança técnica.</p>
                     </div>
                 </div>
 
-                <div class="bg-white p-2 rounded-xl border-l-4 border-blue-700 shadow-sm flex items-center gap-3">
-                    <div class="bg-blue-100 text-blue-800 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0">2</div>
+                <div class="bg-white p-2.5 rounded-xl border-l-4 border-blue-700 shadow-sm flex items-center gap-3">
+                    <div class="bg-blue-100 text-blue-800 w-7 h-7 rounded-lg flex items-center justify-center font-black text-xs shrink-0">2</div>
                     <div>
-                        <h4 class="text-[10px] font-black text-blue-900 uppercase italic">Instalações Elétricas & Geradores</h4>
-                        <p class="text-[8.5px] text-slate-600 leading-tight">Venda, dimensionamento e execução de geradores de energia e infraestrutura elétrica robusta.</p>
+                        <h4 class="text-[11px] font-black text-blue-900 uppercase italic">Instalações Elétricas & Geradores</h4>
+                        <p class="text-[9.5px] text-slate-600 leading-tight">Venda, dimensionamento e execução de geradores de energia e infraestrutura elétrica robusta.</p>
                     </div>
                 </div>
 
-                <div class="bg-white p-2 rounded-xl border-l-4 border-blue-600 shadow-sm flex items-center gap-3">
-                    <div class="bg-blue-100 text-blue-700 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0">3</div>
+                <div class="bg-white p-2.5 rounded-xl border-l-4 border-blue-600 shadow-sm flex items-center gap-3">
+                    <div class="bg-blue-100 text-blue-700 w-7 h-7 rounded-lg flex items-center justify-center font-black text-xs shrink-0">3</div>
                     <div>
-                        <h4 class="text-[10px] font-black text-blue-900 uppercase italic">Execução & Financiamento Parceiro</h4>
-                        <p class="text-[8px] text-slate-600 leading-tight">Instalação certificada e facilidade de pagamento com linhas de crédito em bancos parceiros.</p>
+                        <h4 class="text-[11px] font-black text-blue-900 uppercase italic">Execução & Financiamento Parceiro</h4>
+                        <p class="text-[9.5px] text-slate-600 leading-tight">Instalação certificada e facilidade de pagamento com linhas de crédito em bancos parceiros.</p>
                     </div>
                 </div>
 
-                <div class="bg-amber-50 p-2 rounded-xl border-l-4 border-amber-500 shadow-sm flex items-center gap-3 border border-amber-200">
-                    <div class="bg-amber-100 text-amber-800 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0"><i class="fas fa-tools text-[10px]"></i></div>
+                <div class="bg-amber-50 p-2.5 rounded-xl border-l-4 border-amber-500 shadow-sm flex items-center gap-3 border border-amber-200">
+                    <div class="bg-amber-100 text-amber-800 w-7 h-7 rounded-lg flex items-center justify-center font-black text-xs shrink-0"><i class="fas fa-tools text-[10px]"></i></div>
                     <div>
-                        <h4 class="text-[10px] font-black text-amber-900 uppercase italic">Manutenção Preventiva e Corretiva</h4>
-                        <p class="text-[8.5px] text-amber-900 leading-tight font-medium">Suporte especializado para assegurar a alta performance e longevidade do seu sistema.</p>
+                        <h4 class="text-[11px] font-black text-amber-900 uppercase italic">Manutenção Preventiva e Corretiva</h4>
+                        <p class="text-[9.5px] text-amber-900 leading-tight font-medium">Suporte especializado para assegurar a alta performance e longevidade do seu sistema.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="w-full bg-white/90 p-3.5 rounded-[2rem] border-2 border-blue-100 shadow-md my-1">
-                <p class="text-[9px] font-bold text-blue-600 uppercase tracking-widest mb-0.5 italic">Apresentado para:</p>
-                <h2 id="resNome" class="text-2xl font-black text-slate-800 uppercase italic leading-tight">NOME DO CLIENTE</h2>
-                <p id="resCpf" class="text-slate-500 font-bold text-[10px] mt-0.5">CPF: 000.000.000-00</p>
-                <p id="resEndereco" class="text-slate-400 text-[9.5px] mt-0.5 uppercase italic font-medium">Endereço: Não Informado</p>
+            <!-- BLOCO APRESENTADO PARA COM FONTES MAIORES -->
+            <div class="w-full bg-white/95 p-4 rounded-[2rem] border-2 border-blue-100 shadow-md my-1">
+                <p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-0.5 italic">Apresentado para:</p>
+                <h2 id="resNome" class="text-3xl font-black text-slate-800 uppercase italic leading-tight">NOME DO CLIENTE</h2>
+                <p id="resCpf" class="text-slate-500 font-bold text-xs mt-0.5">CPF: 000.000.000-00</p>
+                <p id="resEndereco" class="text-slate-400 text-[11px] mt-0.5 uppercase italic font-medium">Endereço: Não Informado</p>
                 
-                <div class="grid grid-cols-4 gap-1.5 mt-2 pt-2 border-t-2 border-slate-50 text-center">
-                    <div><p class="text-[8px] text-slate-400 font-bold uppercase">Consumo</p><b id="resConsumo" class="text-xs text-blue-900">0 kWh</b></div>
-                    <div><p class="text-[8px] text-slate-400 font-bold uppercase">Potência</p><b id="resPot" class="text-xs text-blue-900">0.00 kWp</b></div>
-                    <div><p class="text-[8px] text-slate-400 font-bold uppercase">Geração</p><b id="resGerCapa" class="text-xs text-blue-900">0 kWh</b></div>
-                    <div><p class="text-[8px] text-slate-400 font-bold uppercase">Área (Placas)</p><b id="resArea" class="text-xs text-blue-900">0 m²</b></div>
+                <div class="grid grid-cols-4 gap-2 mt-2.5 pt-2.5 border-t-2 border-slate-100 text-center">
+                    <div><p class="text-[9px] text-slate-400 font-bold uppercase">Consumo</p><b id="resConsumo" class="text-sm text-blue-900">0 kWh</b></div>
+                    <div><p class="text-[9px] text-slate-400 font-bold uppercase">Potência</p><b id="resPot" class="text-sm text-blue-900">0.00 kWp</b></div>
+                    <div><p class="text-[9px] text-slate-400 font-bold uppercase">Geração</p><b id="resGerCapa" class="text-sm text-blue-900">0 kWh</b></div>
+                    <div><p class="text-[9px] text-slate-400 font-bold uppercase">Área (Placas)</p><b id="resArea" class="text-sm text-blue-900">0 m²</b></div>
                 </div>
             </div>
 
             <div class="text-center pt-1">
-                <p class="text-[9px] font-bold text-blue-900 uppercase tracking-wider">
+                <p class="text-[10px] font-bold text-blue-900 uppercase tracking-wider">
                     <i class="fas fa-map-marker-alt text-blue-600 mr-1"></i> Rua da Paz, Jardim Planalto - Novo Progresso, Pará
                 </p>
-                <p class="text-[8.5px] font-black text-blue-900 tracking-[0.3em] uppercase opacity-50 mt-0.5">Nortbras Energia • Soluções em Energia</p>
+                <p class="text-[9.5px] font-black text-blue-900 tracking-[0.3em] uppercase opacity-60 mt-0.5">Nortbras Energia • Soluções em Energia</p>
             </div>
         </div>
 
@@ -147,7 +155,6 @@
                     <h2 class="text-2xl font-black text-blue-900 uppercase italic border-l-8 border-blue-900 pl-4">Composição Técnica</h2>
                     <span class="text-blue-900 font-black text-xs uppercase italic">Nortbras Energia</span>
                 </div>
-                <!-- Grade perfeitamente otimizada para exibir os 6 itens sem cortes -->
                 <div id="gridMateriais" class="grid grid-cols-2 gap-3"></div>
             </div>
             
@@ -234,7 +241,6 @@
             const TARIFA = 1.42;
             const kwhTotal = (!inputConsumo || isNaN(inputConsumo)) ? (fatura / TARIFA) : inputConsumo;
 
-            // Dimensionamento ajustado para resultar exatamente em 16 painéis para 1000 kWh
             let p = Math.ceil((kwhTotal / 30) / 2.15);
             if (fatura >= 1000 && p < 16) p = 16; 
 
@@ -321,7 +327,6 @@
                 boxAlerta.classList.add('hidden');
             }
 
-            // Grade otimizada exibindo os 6 itens com fontes proporcionais e legíveis
             document.getElementById('gridMateriais').innerHTML = `
                 <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11.5px] font-bold uppercase italic">${p}x Monocristalinos 610W</p><b class="text-xs text-blue-950">${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11.5px] font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b class="text-xs text-blue-950">${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
