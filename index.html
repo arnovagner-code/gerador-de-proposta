@@ -33,15 +33,17 @@
         }
         .img-kit { height: 60px; object-fit: contain; margin: 0 auto 4px; }
         
-        /* Logo ajustada para ocupar de lado a lado da página com grande destaque */
+        /* Ajustado para 'contain' para mostrar a imagem INTEIRA (com a cidade no fundo) de lado a lado */
         .img-logo { 
             width: 100%; 
             height: auto; 
-            max-height: 220px; 
-            object-fit: cover; 
+            max-height: 240px; 
+            object-fit: contain; 
             border-radius: 1.5rem; 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
             border: 3px solid #fbbf24;
+            background-color: #0b1329; /* Fundo escuro elegante combinando com a imagem */
+            padding: 5px;
         }
     </style>
 </head>
@@ -75,7 +77,7 @@
         
         <!-- PÁGINA 1: CAPA E RESUMO INSTITUCIONAL -->
         <div class="page bg-vibrante flex flex-col items-center justify-between">
-            <!-- LOGO DE LADO A LADO DA PÁGINA -->
+            <!-- LOGO DE LADO A LADO MOSTRANDO A IMAGEM INTEIRA -->
             <div class="w-full pt-1">
                 <img src="nort-logo.jpg.jpg" alt="Nortbras Energia Logo" class="img-logo" onerror="this.src='logo.png'">
             </div>
@@ -125,7 +127,6 @@
                 </div>
             </div>
 
-            <!-- BLOCO APRESENTADO PARA COM FONTES MAIORES -->
             <div class="w-full bg-white/95 p-4 rounded-[2rem] border-2 border-blue-100 shadow-md my-1">
                 <p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-0.5 italic">Apresentado para:</p>
                 <h2 id="resNome" class="text-3xl font-black text-slate-800 uppercase italic leading-tight">NOME DO CLIENTE</h2>
