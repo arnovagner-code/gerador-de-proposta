@@ -29,10 +29,10 @@
         }
         .bg-vibrante { background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%); }
         .card-kit { 
-            background: white; border-radius: 1rem; border: 1px solid #e2e8f0;
-            padding: 12px 15px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+            background: white; border-radius: 0.8rem; border: 1px solid #e2e8f0;
+            padding: 10px 12px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
-        .img-kit { height: 65px; object-fit: contain; margin: 0 auto 6px; }
+        .img-kit { height: 55px; object-fit: contain; margin: 0 auto 4px; }
         
         /* MOLDURA PERFEITA PROPORCIONAL MOSTRANDO A IMAGEM INTEIRA */
         .img-logo-container {
@@ -160,20 +160,23 @@
             </div>
         </div>
 
-        <!-- PÁGINA 2: COMPOSIÇÃO TÉCNICA (ESPAÇAMENTO CORRIGIDO E EQUILIBRADO) -->
+        <!-- PÁGINA 2: COMPOSIÇÃO TÉCNICA -->
         <div class="page">
-            <div>
-                <div class="flex justify-between items-center mb-6">
+            <div class="w-full">
+                <div class="flex justify-between items-center mb-4">
                     <h2 class="text-2xl font-black text-blue-900 uppercase italic border-l-8 border-blue-900 pl-4">Composição Técnica</h2>
                     <span class="text-blue-900 font-black text-xs uppercase italic">Nortbras Energia</span>
                 </div>
-                <div id="gridMateriais" class="grid grid-cols-2 gap-4"></div>
+                <div id="gridMateriais" class="grid grid-cols-2 gap-3"></div>
             </div>
             
-            <div id="alertaUsinaBox" class="hidden my-2 p-3 bg-amber-50 border border-amber-300 text-amber-900 text-xs rounded-xl italic font-bold"></div>
+            <div id="alertaUsinaBox" class="hidden my-1 p-2 bg-amber-50 border border-amber-300 text-amber-900 text-xs rounded-xl italic font-bold"></div>
             
-            <div class="mt-6 p-5 bg-blue-900 rounded-[2rem] text-white flex justify-between items-center shadow-xl">
-                <div><h4 class="text-blue-200 font-black uppercase italic text-xs tracking-widest">Investimento Total do Kit</h4><p class="text-[9px] opacity-60 italic">Tecnologia Ongrid Instalada e Homologada</p></div>
+            <div class="mt-2 p-4 bg-blue-900 rounded-[2rem] text-white flex justify-between items-center shadow-xl">
+                <div>
+                    <h4 class="text-blue-200 font-black uppercase italic text-xs tracking-widest">Investimento Total do Kit</h4>
+                    <p class="text-[9px] opacity-60 italic">Tecnologia Ongrid Instalada e Homologada</p>
+                </div>
                 <b class="text-2xl text-white" id="resTotal">R$ 0,00</b>
             </div>
         </div>
