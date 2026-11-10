@@ -23,15 +23,16 @@
         body { background-color: #f0f4f8; }
         .page { 
             background: #ffffff; width: 210mm; min-height: 297mm; margin: 20px auto; 
-            padding: 30px 40px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            padding: 25px 40px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
             border-left: 15px solid #1e3a8a; box-sizing: border-box;
         }
         .bg-vibrante { background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%); }
         .card-kit { 
-            background: white; border-radius: 1.5rem; border: 1px solid #e2e8f0;
-            padding: 20px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background: white; border-radius: 1.2rem; border: 1px solid #e2e8f0;
+            padding: 12px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        .img-kit { height: 90px; object-fit: contain; margin: 0 auto 10px; }
+        /* Ajuste de tamanho das imagens dos cards para caberem os 6 perfeitamente */
+        .img-kit { height: 65px; object-fit: contain; margin: 0 auto 6px; }
         .img-logo { max-height: 190px; width: auto; max-width: 420px; object-fit: contain; margin: 0 auto; }
     </style>
 </head>
@@ -139,16 +140,21 @@
         </div>
 
         <!-- PÁGINA 2: COMPOSIÇÃO TÉCNICA -->
-        <div class="page flex flex-col">
-            <div class="flex justify-between items-center mb-10">
-                <h2 class="text-3xl font-black text-blue-900 uppercase italic border-l-8 border-blue-900 pl-4">Composição Técnica</h2>
-                <span class="text-blue-900 font-black text-sm uppercase italic">Nortbras Energia</span>
+        <div class="page flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-black text-blue-900 uppercase italic border-l-8 border-blue-900 pl-4">Composição Técnica</h2>
+                    <span class="text-blue-900 font-black text-xs uppercase italic">Nortbras Energia</span>
+                </div>
+                <!-- Grade compacta com 3 linhas e 2 colunas para caberem perfeitamente na folha A4 -->
+                <div id="gridMateriais" class="grid grid-cols-2 gap-3"></div>
             </div>
-            <div id="gridMateriais" class="grid grid-cols-2 gap-6 flex-grow"></div>
-            <div id="alertaUsinaBox" class="hidden mb-4 p-4 bg-amber-50 border border-amber-300 text-amber-900 text-xs rounded-2xl italic font-bold"></div>
-            <div class="mt-8 p-10 bg-blue-900 rounded-[3rem] text-white flex justify-between items-center shadow-2xl">
-                <div><h4 class="text-blue-200 font-black uppercase italic text-sm tracking-widest">Investimento Total do Kit</h4><p class="text-[10px] opacity-60 italic">Tecnologia Ongrid Instalada e Homologada</p></div>
-                <b class="text-4xl text-white" id="resTotal">R$ 0,00</b>
+            
+            <div id="alertaUsinaBox" class="hidden my-2 p-3 bg-amber-50 border border-amber-300 text-amber-900 text-xs rounded-xl italic font-bold"></div>
+            
+            <div class="mt-4 p-6 bg-blue-900 rounded-[2rem] text-white flex justify-between items-center shadow-xl">
+                <div><h4 class="text-blue-200 font-black uppercase italic text-xs tracking-widest">Investimento Total do Kit</h4><p class="text-[9px] opacity-60 italic">Tecnologia Ongrid Instalada e Homologada</p></div>
+                <b class="text-2xl text-white" id="resTotal">R$ 0,00</b>
             </div>
         </div>
 
@@ -227,8 +233,8 @@
             const TARIFA = 1.42;
             const kwhTotal = (!inputConsumo || isNaN(inputConsumo)) ? (fatura / TARIFA) : inputConsumo;
 
-            // Dimensionamento corrigido para resultar exatamente em 16 painéis para 1000 kWh
-            let p = Math.ceil((kwhTotal / 30) / 2.08);
+            // Dimensionamento ajustado para resultar exatamente em 16 painéis para 1000 kWh
+            let p = Math.ceil((kwhTotal / 30) / 2.15);
             if (fatura >= 1000 && p < 16) p = 16; 
 
             const areaTotalM2 = (p * 2.30 * 1.15).toFixed(1);
@@ -315,14 +321,14 @@
                 boxAlerta.classList.add('hidden');
             }
 
-            // Grade contendo os 6 itens devidamente separados
+            // Grade contendo os 6 itens devidamente separados e otimizados para caber na página A4
             document.getElementById('gridMateriais').innerHTML = `
-                <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 610W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b>${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b>${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Cabos Solares CC/CA</p><b>${vCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">String Box de Proteção</p><b>${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Engenharia e Homologação</p><b>${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11px] font-bold uppercase italic">${p}x Monocristalinos 610W</p><b class="text-xs">${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11px] font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b class="text-xs">${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11px] font-bold uppercase italic">Estrutura Alumínio</p><b class="text-xs">${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11px] font-bold uppercase italic">Cabos Solares CC/CA</p><b class="text-xs">${vCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11px] font-bold uppercase italic">String Box de Proteção</p><b class="text-xs">${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11px] font-bold uppercase italic">Engenharia e Homologação</p><b class="text-xs">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
             `;
 
             let finanHTML = '';
