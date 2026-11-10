@@ -281,10 +281,12 @@
 
             const potKwp = (p * 610 / 1000).toFixed(2);
 
-            const vPaineis = preco * 0.40;
+            // DISTRIBUIÇÃO PROPORCIONAL DOS 6 ITENS
+            const vPaineis = preco * 0.35;
             const vInversor = preco * 0.25;
             const vEstrutura = preco * 0.10;
-            const vKitProtecaoCabos = preco * 0.10; 
+            const vCabos = preco * 0.05;
+            const vStringbox = preco * 0.10;
             const vEngenharia = preco * 0.15;
 
             document.getElementById('resNome').innerText = (nome || "Cliente Nortbras").toUpperCase();
@@ -312,13 +314,14 @@
                 boxAlerta.classList.add('hidden');
             }
 
-            // Grade de Materiais corrigida com a imagem dos cabos (cabos.jpg.jpg.jpg) e o texto incluindo Cabos Solares junto à String Box
+            // Grade contendo exatamente os 6 itens separados (com imagens e valores individuais)
             document.getElementById('gridMateriais').innerHTML = `
                 <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 610W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b>${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b>${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Kit Proteção String Box & Cabos Solares</p><b>${vKitProtecaoCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit col-span-2"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Engenharia e Instalação Ongrid</p><b class="text-xl text-blue-900">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Cabos Solares CC/CA</p><b>${vCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">String Box de Proteção</p><b>${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Engenharia e Homologação</p><b>${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
             `;
 
             let finanHTML = '';
