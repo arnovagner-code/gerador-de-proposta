@@ -315,14 +315,13 @@
                 boxAlerta.classList.add('hidden');
             }
 
-            // Grade de Materiais incluindo a imagem de instalação e homologação (instalacao.jpg.jpg.jpg)
+            // Grade de Materiais com Cabos junto ao Kit de Proteção e Imagem de Instalação no card de Engenharia/Homologação
             document.getElementById('gridMateriais').innerHTML = `
                 <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 585W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b>${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b>${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Cabos Solares CC/CA</p><b>${(vKitProtecaoCabos/2).toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">String Box de Proteção</p><b>${(vKitProtecaoCabos/2).toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Engenharia e Homologação</p><b>${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Kit Proteção Ongrid & Cabos Solares</p><b>${vKitProtecaoCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit col-span-2"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Engenharia e Instalação Ongrid</p><b class="text-xl text-blue-900">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
             `;
 
             let finanHTML = '';
