@@ -299,11 +299,12 @@
 
             const potKwp = (p * 585 / 1000).toFixed(2);
 
-            // DISTRIBUIÇÃO PROPORCIONAL DOS COMPONENTES
-            const vPaineis = preco * 0.40;
+            // DISTRIBUIÇÃO PROPORCIONAL DOS COMPONENTES (Incluindo cabos)
+            const vPaineis = preco * 0.35;
             const vInversor = preco * 0.25;
-            const vEstrutura = preco * 0.10;
-            const vStringbox = preco * 0.10;
+            const vEstrutura = preco * 0.08;
+            const vCabos = preco * 0.07;       /* Novo item: Cabo */
+            const vStringbox = preco * 0.10;   /* Novo item: Stringbox */
             const vEngenharia = preco * 0.15;
 
             // Preenchimento dos dados visuais
@@ -332,12 +333,14 @@
                 boxAlerta.classList.add('hidden');
             }
 
+            // Grade de Materiais Atualizada com Cabos e Stringbox baseada nos nomes dos arquivos
             document.getElementById('gridMateriais').innerHTML = `
                 <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 585W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b>${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b>${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Kit Proteção Ongrid</p><b>${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="col-span-2 bg-blue-50 p-4 rounded-3xl border flex justify-between items-center px-10 italic border-blue-200"><h4 class="text-blue-900 font-black text-xs uppercase italic">Engenharia e Instalação Ongrid</h4><b class="text-xl text-blue-900">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Cabos Solares CC/CA</p><b>${vCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">String Box de Proteção</p><b>${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit bg-blue-50 border-blue-200 flex flex-col justify-center items-center"><h4 class="text-blue-900 font-black text-xs uppercase italic mb-1">Engenharia e Homologação</h4><b class="text-base text-blue-900">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
             `;
 
             let finanHTML = '';
