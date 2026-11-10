@@ -32,7 +32,6 @@
             padding: 20px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         .img-kit { height: 90px; object-fit: contain; margin: 0 auto 10px; }
-        /* Logo ampliada */
         .img-logo { max-height: 190px; width: auto; max-width: 420px; object-fit: contain; margin: 0 auto; }
     </style>
 </head>
@@ -67,7 +66,6 @@
         <!-- PÁGINA 1: CAPA E RESUMO INSTITUCIONAL -->
         <div class="page bg-vibrante flex flex-col items-center justify-between">
             <div class="w-full flex justify-center pt-2">
-                <!-- Logotipo Visual Oficial Nortbras com Imagem Ampliada -->
                 <div class="flex flex-col items-center justify-center w-full">
                     <img src="logo_nortbras.jng.html.jpeg" alt="Nortbras Energia Logo" class="img-logo rounded-2xl shadow-xl border-2 border-amber-400" onerror="this.src='logo.png'">
                 </div>
@@ -86,7 +84,6 @@
                     <i class="fas fa-layer-group text-blue-600 mr-1"></i> Nossa Solução Completa: Do Projeto ao Pós-Venda
                 </p>
 
-                <!-- Degrau 1 -->
                 <div class="bg-white p-2 rounded-xl border-l-4 border-blue-900 shadow-sm flex items-center gap-3">
                     <div class="bg-blue-100 text-blue-900 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0">1</div>
                     <div>
@@ -95,7 +92,6 @@
                     </div>
                 </div>
 
-                <!-- Degrau 2 -->
                 <div class="bg-white p-2 rounded-xl border-l-4 border-blue-700 shadow-sm flex items-center gap-3">
                     <div class="bg-blue-100 text-blue-800 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0">2</div>
                     <div>
@@ -104,7 +100,6 @@
                     </div>
                 </div>
 
-                <!-- Degrau 3 -->
                 <div class="bg-white p-2 rounded-xl border-l-4 border-blue-600 shadow-sm flex items-center gap-3">
                     <div class="bg-blue-100 text-blue-700 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0">3</div>
                     <div>
@@ -113,7 +108,6 @@
                     </div>
                 </div>
 
-                <!-- Degrau 4 (Destaque Manutenção) -->
                 <div class="bg-amber-50 p-2 rounded-xl border-l-4 border-amber-500 shadow-sm flex items-center gap-3 border border-amber-200">
                     <div class="bg-amber-100 text-amber-800 w-6 h-6 rounded-lg flex items-center justify-center font-black text-[11px] shrink-0"><i class="fas fa-tools text-[10px]"></i></div>
                     <div>
@@ -138,7 +132,6 @@
                 </div>
             </div>
 
-            <!-- Endereço da Empresa no Rodapé da Capa -->
             <div class="text-center pt-1">
                 <p class="text-[8.5px] font-bold text-blue-900 uppercase tracking-wider">
                     <i class="fas fa-map-marker-alt text-blue-600 mr-1"></i> Rua da Paz, Jardim Planalto - Novo Progresso, Pará
@@ -180,7 +173,6 @@
                 </div>
             </div>
 
-            <!-- Quadros de Comparativos -->
             <div class="grid grid-cols-2 gap-3 mb-3">
                 <div class="bg-emerald-50 p-3 rounded-3xl border border-emerald-200 text-center shadow-sm">
                     <p class="text-[9px] font-black text-emerald-600 uppercase italic">Economia à Vista (1 Ano)</p>
@@ -234,18 +226,14 @@
                 return;
             }
 
-            // 1. TARIFA E CONSUMO (kWh)
             const TARIFA = 1.42;
             const kwhTotal = (!inputConsumo || isNaN(inputConsumo)) ? (fatura / TARIFA) : inputConsumo;
 
-            // 2. CÁLCULO DE PAINÉIS SOLARES
             let p = Math.ceil((kwhTotal / 30) / 1.92);
             if (fatura >= 1000 && p < 14) p = 14; 
 
-            // CÁLCULO DA ÁREA NECESSÁRIA (Cada placa mede 2.30m x 1.15m = 2.645 m²)
             const areaTotalM2 = (p * 2.30 * 1.15).toFixed(1);
 
-            // 3. TABELA DE PREÇOS BASE E PRECIFICAÇÃO PROGRESSIVA
             const PRECO_BASE_HASTA_10 = 1471.50; 
             const PRECO_ADICIONAL_PLACA = 1308.00; 
 
@@ -266,7 +254,6 @@
 
             const preco = (inputValorKit && !isNaN(inputValorKit) && inputValorKit > 0) ? inputValorKit : precoCalculado;
 
-            // 4. POTÊNCIA DO INVERSOR
             let inv = Math.round((p * 585) / 1000);
             let alertaUsina = "";
 
@@ -276,14 +263,11 @@
                 alertaUsina = "Atenção: Usinas com inversores acima de 75 kW precisam estar enquadradas na Classe B Optante ou em outro modelo de compensação de energia injetada.";
             }
 
-            // 5. GERAÇÃO MENSAL
             const ger = ((p * 585 * 4.5 * 30) / 1000) * 0.82;
 
-            // 6. NOVA FATURA ESTIMADA
             const novaFaturaEstimada = (kwhTotal * 0.58) * 0.56;
             const econMensal = fatura - novaFaturaEstimada;
 
-            // 7. COMPARATIVOS FINANCEIROS
             const economiaVistaAnual = econMensal * 12;
             const economiaVista4Anos = econMensal * 48;
 
@@ -299,15 +283,13 @@
 
             const potKwp = (p * 585 / 1000).toFixed(2);
 
-            // DISTRIBUIÇÃO PROPORCIONAL DOS COMPONENTES (Incluindo cabos)
-            const vPaineis = preco * 0.35;
+            // DISTRIBUIÇÃO PROPORCIONAL (Cabos agrupados junto com a Stringbox de Proteção)
+            const vPaineis = preco * 0.40;
             const vInversor = preco * 0.25;
-            const vEstrutura = preco * 0.08;
-            const vCabos = preco * 0.07;       /* Novo item: Cabo */
-            const vStringbox = preco * 0.10;   /* Novo item: Stringbox */
+            const vEstrutura = preco * 0.10;
+            const vKitProtecaoCabos = preco * 0.10; // Cabos + Stringbox unificados
             const vEngenharia = preco * 0.15;
 
-            // Preenchimento dos dados visuais
             document.getElementById('resNome').innerText = (nome || "Cliente Nortbras").toUpperCase();
             document.getElementById('resCpf').innerText = "CPF/CNPJ: " + (cpf || "Não Informado");
             document.getElementById('resEndereco').innerText = "Endereço: " + (endereco || "Não Informado");
@@ -333,14 +315,13 @@
                 boxAlerta.classList.add('hidden');
             }
 
-            // Grade de Materiais Atualizada com Cabos e Stringbox baseada nos nomes dos arquivos
+            // Grade de Materiais unificando Cabos e Kit de Proteção em um único card com as imagens ou descrição conjunta
             document.getElementById('gridMateriais').innerHTML = `
                 <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 585W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b>${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b>${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Cabos Solares CC/CA</p><b>${vCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">String Box de Proteção</p><b>${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit bg-blue-50 border-blue-200 flex flex-col justify-center items-center"><h4 class="text-blue-900 font-black text-xs uppercase italic mb-1">Engenharia e Homologação</h4><b class="text-base text-blue-900">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Kit Proteção Ongrid & Cabos Solares</p><b>${vKitProtecaoCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="col-span-2 bg-blue-50 p-4 rounded-3xl border flex justify-between items-center px-10 italic border-blue-200"><h4 class="text-blue-900 font-black text-xs uppercase italic">Engenharia e Instalação Ongrid</h4><b class="text-xl text-blue-900">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
             `;
 
             let finanHTML = '';
