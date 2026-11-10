@@ -23,15 +23,16 @@
         body { background-color: #f0f4f8; }
         .page { 
             background: #ffffff; width: 210mm; min-height: 297mm; margin: 20px auto; 
-            padding: 18px 35px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            padding: 25px 35px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
             border-left: 15px solid #1e3a8a; box-sizing: border-box;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
         .bg-vibrante { background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%); }
         .card-kit { 
-            background: white; border-radius: 1.2rem; border: 1px solid #e2e8f0;
-            padding: 10px 15px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background: white; border-radius: 1rem; border: 1px solid #e2e8f0;
+            padding: 12px 15px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
         }
-        .img-kit { height: 60px; object-fit: contain; margin: 0 auto 4px; }
+        .img-kit { height: 65px; object-fit: contain; margin: 0 auto 6px; }
         
         /* MOLDURA PERFEITA PROPORCIONAL MOSTRANDO A IMAGEM INTEIRA */
         .img-logo-container {
@@ -82,7 +83,7 @@
     <div id="renderArea" class="hidden">
         
         <!-- PÁGINA 1: CAPA E RESUMO INSTITUCIONAL -->
-        <div class="page bg-vibrante flex flex-col items-center justify-between">
+        <div class="page bg-vibrante">
             <!-- LOGO COM A PROPORÇÃO IDEAL E INTEIRA -->
             <div class="w-full pt-0">
                 <div class="img-logo-container">
@@ -159,32 +160,32 @@
             </div>
         </div>
 
-        <!-- PÁGINA 2: COMPOSIÇÃO TÉCNICA -->
-        <div class="page flex flex-col justify-between">
+        <!-- PÁGINA 2: COMPOSIÇÃO TÉCNICA (ESPAÇAMENTO CORRIGIDO E EQUILIBRADO) -->
+        <div class="page">
             <div>
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-black text-blue-900 uppercase italic border-l-8 border-blue-900 pl-4">Composição Técnica</h2>
                     <span class="text-blue-900 font-black text-xs uppercase italic">Nortbras Energia</span>
                 </div>
-                <div id="gridMateriais" class="grid grid-cols-2 gap-3"></div>
+                <div id="gridMateriais" class="grid grid-cols-2 gap-4"></div>
             </div>
             
             <div id="alertaUsinaBox" class="hidden my-2 p-3 bg-amber-50 border border-amber-300 text-amber-900 text-xs rounded-xl italic font-bold"></div>
             
-            <div class="mt-4 p-5 bg-blue-900 rounded-[2rem] text-white flex justify-between items-center shadow-xl">
+            <div class="mt-6 p-5 bg-blue-900 rounded-[2rem] text-white flex justify-between items-center shadow-xl">
                 <div><h4 class="text-blue-200 font-black uppercase italic text-xs tracking-widest">Investimento Total do Kit</h4><p class="text-[9px] opacity-60 italic">Tecnologia Ongrid Instalada e Homologada</p></div>
                 <b class="text-2xl text-white" id="resTotal">R$ 0,00</b>
             </div>
         </div>
 
         <!-- PÁGINA 3: VIABILIDADE E COMPARATIVOS FINANCEIROS -->
-        <div class="page flex flex-col bg-vibrante">
-            <div class="flex justify-between items-center mb-4">
+        <div class="page bg-vibrante">
+            <div class="flex justify-between items-center mb-3">
                 <h2 class="text-2xl font-black text-blue-900 uppercase italic">Viabilidade e Comparativos</h2>
                 <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full uppercase italic"><i class="fas fa-handshake mr-1"></i> Financiamento Bancário Disponível</span>
             </div>
             
-            <div class="bg-white p-3 rounded-[2rem] border-2 border-blue-900 shadow-lg mb-3 flex items-center gap-5 relative overflow-hidden">
+            <div class="bg-white p-3 rounded-[2rem] border-2 border-blue-900 shadow-lg mb-2.5 flex items-center gap-5 relative overflow-hidden">
                 <div class="absolute -right-4 -top-4 bg-blue-900 text-white px-8 py-2 rotate-12 font-black text-[10px] uppercase">Nova Fatura</div>
                 <div class="bg-blue-900 text-white p-3 rounded-2xl">
                     <i class="fas fa-file-invoice-dollar text-lg"></i>
@@ -196,40 +197,40 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-3 mb-3">
-                <div class="bg-emerald-50 p-3 rounded-3xl border border-emerald-200 text-center shadow-sm">
+            <div class="grid grid-cols-2 gap-2.5 mb-2.5">
+                <div class="bg-emerald-50 p-2.5 rounded-3xl border border-emerald-200 text-center shadow-sm">
                     <p class="text-[9px] font-black text-emerald-600 uppercase italic">Economia à Vista (1 Ano)</p>
                     <b class="text-base text-emerald-700" id="resEcoVistaAnual">R$ 0,00</b>
                 </div>
-                <div class="bg-emerald-100 p-3 rounded-3xl border border-emerald-300 text-center shadow-sm">
+                <div class="bg-emerald-100 p-2.5 rounded-3xl border border-emerald-300 text-center shadow-sm">
                     <p class="text-[9px] font-black text-emerald-800 uppercase italic">Economia à Vista (48 Meses / 4 Anos)</p>
                     <b class="text-base text-emerald-900" id="resEcoVista4Anos">R$ 0,00</b>
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-3 mb-3">
-                <div class="bg-blue-50 p-3 rounded-3xl border border-blue-200 text-center shadow-sm">
+            <div class="grid grid-cols-2 gap-2.5 mb-2.5">
+                <div class="bg-blue-50 p-2.5 rounded-3xl border border-blue-200 text-center shadow-sm">
                     <p class="text-[9px] font-black text-blue-600 uppercase italic">Economia Financiada (48 Meses)</p>
                     <b class="text-base text-blue-900" id="resEcoFinanc4Anos">R$ 0,00</b>
                     <p class="text-[8px] text-blue-600 mt-0.5">(Fatura - (Parcela 48x + Nova Fatura)) × 48</p>
                 </div>
-                <div class="bg-amber-50 p-3 rounded-3xl border border-amber-200 text-center shadow-sm">
+                <div class="bg-amber-50 p-2.5 rounded-3xl border border-amber-200 text-center shadow-sm">
                     <p class="text-[9px] font-black text-amber-700 uppercase italic">Custo sem Solar (48m c/ Reajuste 15%)</p>
                     <b class="text-base text-amber-900" id="resCustoSemSolarReajuste">R$ 0,00</b>
                     <p class="text-[8px] text-amber-800 mt-0.5">Fatura × 48 meses + 15% de reajuste</p>
                 </div>
             </div>
 
-            <p class="font-black text-[10px] text-blue-900 uppercase tracking-widest mb-1.5 ml-2 italic underline">Simulação de Parcelamento com Bancos Parceiros (24x a 60x):</p>
-            <div id="resFinan" class="grid grid-cols-2 gap-2.5 mb-3"></div>
+            <p class="font-black text-[10px] text-blue-900 uppercase tracking-widest mb-1 ml-2 italic underline">Simulação de Parcelamento com Bancos Parceiros (24x a 60x):</p>
+            <div id="resFinan" class="grid grid-cols-2 gap-2 mb-2"></div>
 
-            <div class="mt-auto bg-white p-5 rounded-[2.5rem] border-t-8 border-blue-900 shadow-xl">
+            <div class="bg-white p-4 rounded-[2rem] border-t-8 border-blue-900 shadow-xl">
                 <div class="grid grid-cols-2 gap-10 text-center">
-                    <div><div class="h-[1px] bg-slate-200 mb-2"></div><p class="text-[10px] font-black uppercase italic" id="assNome">CLIENTE</p></div>
-                    <div><div class="h-[1px] bg-blue-900 mb-2"></div><p class="text-[10px] font-black uppercase italic" id="resVendedor">VAGNER CRISTO</p><p class="text-[8px] text-blue-600 font-bold italic underline uppercase">Consultor(a) / Resp. Nortbras</p></div>
+                    <div><div class="h-[1px] bg-slate-200 mb-1.5"></div><p class="text-[10px] font-black uppercase italic" id="assNome">CLIENTE</p></div>
+                    <div><div class="h-[1px] bg-blue-900 mb-1.5"></div><p class="text-[10px] font-black uppercase italic" id="resVendedor">VAGNER CRISTO</p><p class="text-[8px] text-blue-600 font-bold italic underline uppercase">Consultor(a) / Resp. Nortbras</p></div>
                 </div>
             </div>
-            <button onclick="window.print()" class="no-print mt-3 w-full bg-blue-900 text-white py-3.5 font-black uppercase rounded-3xl shadow-2xl text-base italic hover:bg-blue-800 transition-all cursor-pointer">Imprimir Proposta Nortbras</button>
+            <button onclick="window.print()" class="no-print mt-2 w-full bg-blue-900 text-white py-3 font-black uppercase rounded-3xl shadow-2xl text-base italic hover:bg-blue-800 transition-all cursor-pointer">Imprimir Proposta Nortbras</button>
         </div>
     </div>
 
@@ -339,12 +340,12 @@
             }
 
             document.getElementById('gridMateriais').innerHTML = `
-                <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11.5px] font-bold uppercase italic">${p}x Monocristalinos 610W</p><b class="text-xs text-blue-950">${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11.5px] font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b class="text-xs text-blue-950">${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11.5px] font-bold uppercase italic">Estrutura Alumínio</p><b class="text-xs text-blue-950">${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11.5px] font-bold uppercase italic">Cabos Solares CC/CA</p><b class="text-xs text-blue-950">${vCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11.5px] font-bold uppercase italic">String Box de Proteção</p><b class="text-xs text-blue-950">${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                <div class="card-kit"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-[11.5px] font-bold uppercase italic">Engenharia e Homologação</p><b class="text-xs text-blue-950">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 610W</p><b class="text-sm text-blue-950">${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b class="text-sm text-blue-950">${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b class="text-sm text-blue-950">${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Cabos Solares CC/CA</p><b class="text-sm text-blue-950">${vCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">String Box de Proteção</p><b class="text-sm text-blue-950">${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Engenharia e Homologação</p><b class="text-sm text-blue-950">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
             `;
 
             let finanHTML = '';
@@ -354,14 +355,14 @@
                 let custoSemSolarPrazo = (fatura * m) * 1.15;
                 
                 finanHTML += `
-                    <div class="bg-white p-3 rounded-2xl border-2 border-blue-100 shadow-md">
-                        <div class="flex justify-between items-center mb-1.5">
-                            <span class="text-xs font-black text-blue-900 uppercase italic">${m}x FINANCIADO:</span>
-                            <span class="text-sm font-black text-blue-700">${pmt.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}/mês</span>
+                    <div class="bg-white p-2.5 rounded-2xl border-2 border-blue-100 shadow-md">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[11px] font-black text-blue-900 uppercase italic">${m}x FINANCIADO:</span>
+                            <span class="text-xs font-black text-blue-700">${pmt.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}/mês</span>
                         </div>
-                        <div class="bg-amber-50 p-2 rounded-xl border border-amber-200 flex justify-between items-center">
-                            <span class="text-[9px] font-black text-amber-900 uppercase italic">Custo sem Solar (${m}m + 15%):</span>
-                            <b class="text-xs font-black text-amber-700">${custoSemSolarPrazo.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b>
+                        <div class="bg-amber-50 p-1.5 rounded-xl border border-amber-200 flex justify-between items-center">
+                            <span class="text-[8.5px] font-black text-amber-900 uppercase italic">Custo sem Solar (${m}m):</span>
+                            <b class="text-[11px] font-black text-amber-700">${custoSemSolarPrazo.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b>
                         </div>
                     </div>`;
             });
