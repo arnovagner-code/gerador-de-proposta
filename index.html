@@ -254,7 +254,7 @@
 
             const preco = (inputValorKit && !isNaN(inputValorKit) && inputValorKit > 0) ? inputValorKit : precoCalculado;
 
-            let inv = Math.round((p * 585) / 1000);
+            let inv = Math.round((p * 600) / 1000);
             let alertaUsina = "";
 
             if ((p >= 128 && p <= 175) || (fatura >= 10100 && fatura <= 13800)) {
@@ -263,7 +263,7 @@
                 alertaUsina = "Atenção: Usinas com inversores acima de 75 kW precisam estar enquadradas na Classe B Optante ou em outro modelo de compensação de energia injetada.";
             }
 
-            const ger = ((p * 585 * 4.5 * 30) / 1000) * 0.82;
+            const ger = ((p * 600 * 4.5 * 30) / 1000) * 0.82;
 
             const novaFaturaEstimada = (kwhTotal * 0.58) * 0.56;
             const econMensal = fatura - novaFaturaEstimada;
@@ -281,7 +281,7 @@
 
             const custoSemSolarReajuste = (fatura * 48) * 1.15;
 
-            const potKwp = (p * 585 / 1000).toFixed(2);
+            const potKwp = (p * 600 / 1000).toFixed(2);
 
             // DISTRIBUIÇÃO PROPORCIONAL
             const vPaineis = preco * 0.40;
@@ -317,7 +317,7 @@
 
             // Grade de Materiais com Cabos junto ao Kit de Proteção e Imagem de Instalação no card de Engenharia/Homologação
             document.getElementById('gridMateriais').innerHTML = `
-                <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 585W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 610W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b>${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b>${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Kit Proteção Ongrid & Cabos Solares</p><b>${vKitProtecaoCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
