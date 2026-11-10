@@ -254,7 +254,8 @@
 
             const preco = (inputValorKit && !isNaN(inputValorKit) && inputValorKit > 0) ? inputValorKit : precoCalculado;
 
-            let inv = Math.round((p * 600) / 1000);
+            // Atualizado para 610W no cálculo do inversor
+            let inv = Math.round((p * 610) / 1000);
             let alertaUsina = "";
 
             if ((p >= 128 && p <= 175) || (fatura >= 10100 && fatura <= 13800)) {
@@ -263,7 +264,8 @@
                 alertaUsina = "Atenção: Usinas com inversores acima de 75 kW precisam estar enquadradas na Classe B Optante ou em outro modelo de compensação de energia injetada.";
             }
 
-            const ger = ((p * 600 * 4.5 * 30) / 1000) * 0.82;
+            // Atualizado para 610W no cálculo da geração
+            const ger = ((p * 610 * 4.5 * 30) / 1000) * 0.82;
 
             const novaFaturaEstimada = (kwhTotal * 0.58) * 0.56;
             const econMensal = fatura - novaFaturaEstimada;
@@ -281,9 +283,9 @@
 
             const custoSemSolarReajuste = (fatura * 48) * 1.15;
 
-            const potKwp = (p * 600 / 1000).toFixed(2);
+            // Atualizado para 610W no cálculo do kWp
+            const potKwp = (p * 610 / 1000).toFixed(2);
 
-            // DISTRIBUIÇÃO PROPORCIONAL
             const vPaineis = preco * 0.40;
             const vInversor = preco * 0.25;
             const vEstrutura = preco * 0.10;
@@ -315,7 +317,7 @@
                 boxAlerta.classList.add('hidden');
             }
 
-            // Grade de Materiais com Cabos junto ao Kit de Proteção e Imagem de Instalação no card de Engenharia/Homologação
+            // Exibindo 610W na descrição do painel
             document.getElementById('gridMateriais').innerHTML = `
                 <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 610W</p><b>${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
                 <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor Ongrid ${marca} (${inv} kW)</p><b>${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
