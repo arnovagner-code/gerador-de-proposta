@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @media print {
-            @page {
-                size: A4;
-                margin: 0mm;
-            }
             .no-print { display: none !important; }
             body { background: white !important; -webkit-print-color-adjust: exact; margin: 0; padding: 0; }
             .page { 
@@ -19,7 +15,7 @@
                 border: none !important; 
                 box-shadow: none !important; 
                 page-break-after: always; 
-                height: 297mm; 
+                height: 296mm; 
                 width: 210mm;
                 overflow: visible !important;
             }
@@ -38,6 +34,7 @@
         }
         .img-kit { height: 55px; object-fit: contain; margin: 0 auto 4px; }
         
+        /* MOLDURA PERFEITA PROPORCIONAL MOSTRANDO A IMAGEM INTEIRA */
         .img-logo-container {
             width: 100%;
             background-color: #0b1329;
@@ -64,20 +61,20 @@
             <i class="fas fa-solar-panel text-blue-600"></i> Gerador Nortbras - On-Grid
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <input type="text" id="f_nome" placeholder="Nome do Cliente" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-600" value="Cliente Teste">
-            <input type="text" id="f_cpf" placeholder="CPF/CNPJ" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none" value="000.000.000-00">
-            <input type="text" id="f_endereco" placeholder="Endereço da Instalação" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none" value="Rua Principal, 100">
-            <input type="text" id="f_vendedor" placeholder="Nome do Vendedor / Consultor(a)" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none border-blue-200" value="Vagner Cristo">
-            <input type="number" id="f_consumo" placeholder="Consumo Médio (kWh) - Opcional" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none" value="500">
-            <input type="number" id="f_fatura" placeholder="Valor da Fatura Hoje (R$) *" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none" value="700">
-            <input type="number" id="f_valor_kit" placeholder="Valor Manual do Kit (R$) - Opcional" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none border-blue-200" value="">
+            <input type="text" id="f_nome" placeholder="Nome do Cliente" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-600">
+            <input type="text" id="f_cpf" placeholder="CPF/CNPJ" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
+            <input type="text" id="f_endereco" placeholder="Endereço da Instalação" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
+            <input type="text" id="f_vendedor" placeholder="Nome do Vendedor / Consultor(a)" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none border-blue-200">
+            <input type="number" id="f_consumo" placeholder="Consumo Médio (kWh) - Opcional" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
+            <input type="number" id="f_fatura" placeholder="Valor da Fatura Hoje (R$) *" class="p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
+            <input type="number" id="f_valor_kit" placeholder="Valor Manual do Kit (R$) - Opcional" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none border-blue-200">
             
             <select id="f_marca" class="md:col-span-2 p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none">
                 <option value="HUAWEI">Huawei Premium</option>
                 <option value="solis">Solis Gold</option>
                 <option value="solplanete">Solplanet</option>
             </select>
-            <button type="button" id="btnGerar" class="md:col-span-2 bg-blue-900 text-white font-black py-5 rounded-2xl hover:bg-blue-800 transition-all uppercase text-xl shadow-lg cursor-pointer">
+            <button onclick="gerarProposta()" class="md:col-span-2 bg-blue-900 text-white font-black py-5 rounded-2xl hover:bg-blue-800 transition-all uppercase text-xl shadow-lg cursor-pointer">
                 Gerar Proposta Profissional Azul ⚡
             </button>
         </div>
@@ -87,12 +84,14 @@
         
         <!-- PÁGINA 1: CAPA E RESUMO INSTITUCIONAL -->
         <div class="page bg-vibrante">
+            <!-- LOGO COM A PROPORÇÃO IDEAL E INTEIRA -->
             <div class="w-full pt-0">
                 <div class="img-logo-container">
-                    <img src="nort-logo.jpg.jpg" alt="Nortbras Energia Logo" class="img-logo" onerror="this.src='https://via.placeholder.com/600x150?text=Nortbras+Energia'">
+                    <img src="nort-logo.jpg.jpg" alt="Nortbras Energia Logo" class="img-logo" onerror="this.src='logo.png'">
                 </div>
             </div>
 
+            <!-- TÍTULOS COM FONTES GRANDES E DESTACADAS -->
             <div class="text-center my-1">
                 <h1 class="text-4xl font-black text-blue-900 tracking-tight uppercase leading-[1.0]">
                     Projeto de <span class="text-blue-600 italic">Energia Solar</span>
@@ -140,6 +139,7 @@
                 </div>
             </div>
 
+            <!-- BLOCO APRESENTADO PARA COM FONTES BEM GRANDES -->
             <div class="w-full bg-white/95 p-4 rounded-[2rem] border-2 border-blue-100 shadow-md my-1">
                 <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-0.5 italic">Apresentado para:</p>
                 <h2 id="resNome" class="text-3xl font-black text-slate-800 uppercase italic leading-tight">NOME DO CLIENTE</h2>
@@ -154,6 +154,7 @@
                 </div>
             </div>
 
+            <!-- DADOS DA EMPRESA NORTBRAS -->
             <div class="text-center pt-1 border-t border-blue-200 mt-2 pt-2">
                 <p class="text-[11px] font-black text-blue-900 uppercase">
                     V C MONTEIRO DE SOUZA SERVICO • CNPJ: 49.659.696/0001-51
@@ -187,6 +188,7 @@
                 <b class="text-2xl text-white" id="resTotal">R$ 0,00</b>
             </div>
 
+            <!-- DADOS DA EMPRESA NORTBRAS -->
             <div class="text-center pt-1 border-t border-slate-200 mt-2">
                 <p class="text-[10px] font-bold text-slate-500">
                     Nortbras Energia (CNPJ: 49.659.696/0001-51) • E-mail: contato@nortbras.com.br • Tel: (93) 9224-1962
@@ -250,6 +252,7 @@
                 </div>
             </div>
 
+            <!-- DADOS DA EMPRESA NORTBRAS -->
             <div class="text-center pt-1 border-t border-blue-200 mt-2">
                 <p class="text-[10px] font-bold text-slate-600">
                     Nortbras Energia • CNPJ: 49.659.696/0001-51 • E-mail: contato@nortbras.com.br • Tel: (93) 9224-1962
@@ -262,147 +265,139 @@
 
     <script>
         function gerarProposta() {
-            try {
-                const nome = document.getElementById('f_nome').value;
-                const cpf = document.getElementById('f_cpf').value;
-                const endereco = document.getElementById('f_endereco').value;
-                const vendedor = document.getElementById('f_vendedor').value;
-                const inputConsumo = parseFloat(document.getElementById('f_consumo').value);
-                const fatura = parseFloat(document.getElementById('f_fatura').value);
-                const inputValorKit = parseFloat(document.getElementById('f_valor_kit').value);
-                const marca = document.getElementById('f_marca').value;
+            const nome = document.getElementById('f_nome').value;
+            const cpf = document.getElementById('f_cpf').value;
+            const endereco = document.getElementById('f_endereco').value;
+            const vendedor = document.getElementById('f_vendedor').value;
+            const inputConsumo = parseFloat(document.getElementById('f_consumo').value);
+            const fatura = parseFloat(document.getElementById('f_fatura').value);
+            const inputValorKit = parseFloat(document.getElementById('f_valor_kit').value);
+            const marca = document.getElementById('f_marca').value;
 
-                if(!fatura || isNaN(fatura) || fatura <= 0) {
-                    alert("Por favor, preencha o valor da fatura atual!");
-                    return;
-                }
-
-                const TARIFA = 1.42;
-                const kwhTotal = (!inputConsumo || isNaN(inputConsumo)) ? (fatura / TARIFA) : inputConsumo;
-
-                let p = Math.ceil((kwhTotal / 30) / 2.15);
-                if (fatura >= 1000 && p < 16) p = 16; 
-
-                const areaTotalM2 = (p * 2.30 * 1.15).toFixed(1);
-
-                const PRECO_BASE_HASTA_10 = 1471.50; 
-                const PRECO_ADICIONAL_PLACA = 1308.00; 
-
-                let precoCalculado = 0;
-                if (fatura > 9000) {
-                    precoCalculado = p * 1286.20;
-                } else if (fatura > 5600) {
-                    precoCalculado = p * 1253.50;
-                } else if (p > 10) {
-                    precoCalculado = (10 * PRECO_BASE_HASTA_10) + ((p - 10) * PRECO_ADICIONAL_PLACA);
-                } else {
-                    precoCalculado = p * PRECO_BASE_HASTA_10;
-                }
-
-                if (fatura > 9000) {
-                    precoCalculado = precoCalculado * 0.95;
-                }
-
-                const preco = (inputValorKit && !isNaN(inputValorKit) && inputValorKit > 0) ? inputValorKit : precoCalculado;
-
-                let inv = Math.round((p * 610) / 1000);
-                let alertaUsina = "";
-
-                if ((p >= 128 && p <= 175) || (fatura >= 10100 && fatura <= 13800)) {
-                    inv = 75;
-                } else if (p > 175 || fatura > 13800) {
-                    alertaUsina = "Atenção: Usinas com inversores acima de 75 kW precisam estar enquadradas na Classe B Optante ou em outro modelo de compensação de energia injetada.";
-                }
-
-                const ger = ((p * 610 * 4.5 * 30) / 1000) * 0.80;
-
-                const novaFaturaEstimada = (kwhTotal * 0.58) * 0.56;
-                const econMensal = fatura - novaFaturaEstimada;
-
-                const economiaVistaAnual = econMensal * 12;
-                const economiaVista4Anos = econMensal * 48;
-
-                const taxaJuros = 0.021;
-                const valorFinanciado = preco * 1.05;
-                const parcela48x = valorFinanciado * ((taxaJuros * Math.pow(1 + taxaJuros, 48)) / (Math.pow(1 + taxaJuros, 48) - 1));
-
-                const custoMensalFinanciado = parcela48x + novaFaturaEstimada;
-                const diferencaMensalFinanciamento = fatura - custoMensalFinanciado;
-                const economiaFinanciada4Anos = diferencaMensalFinanciamento * 48;
-
-                const custoSemSolarReajuste = (fatura * 48) * 1.15;
-
-                const potKwp = (p * 610 / 1000).toFixed(2);
-
-                const vPaineis = preco * 0.35;
-                const vInversor = preco * 0.25;
-                const vEstrutura = preco * 0.10;
-                const vCabos = preco * 0.05;
-                const vStringbox = preco * 0.10;
-                const vEngenharia = preco * 0.15;
-
-                document.getElementById('resNome').innerText = (nome || "Cliente Nortbras").toUpperCase();
-                document.getElementById('resCpf').innerText = "CPF/CNPJ: " + (cpf || "Não Informado");
-                document.getElementById('resEndereco').innerText = "Endereço: " + (endereco || "Não Informado");
-                document.getElementById('assNome').innerText = (nome || "CLIENTE").toUpperCase();
-                document.getElementById('resVendedor').innerText = (vendedor || "Nortbras Energia").toUpperCase();
-                document.getElementById('resConsumo').innerText = Math.round(kwhTotal) + " kWh";
-                document.getElementById('resPot').innerText = potKwp + " kWp";
-                document.getElementById('resGerCapa').innerText = Math.round(ger) + " kWh";
-                document.getElementById('resArea').innerText = areaTotalM2 + " m²";
-                document.getElementById('resTotal').innerText = preco.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-                document.getElementById('resNovaFatura').innerText = novaFaturaEstimada.toLocaleString('pt-BR', {style:'currency', currency:'BRL'}) + " / mês";
-                
-                document.getElementById('resEcoVistaAnual').innerText = economiaVistaAnual.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-                document.getElementById('resEcoVista4Anos').innerText = economiaVista4Anos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-                document.getElementById('resEcoFinanc4Anos').innerText = economiaFinanciada4Anos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-                document.getElementById('resCustoSemSolarReajuste').innerText = custoSemSolarReajuste.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-
-                const boxAlerta = document.getElementById('alertaUsinaBox');
-                if(alertaUsina) {
-                    boxAlerta.innerText = alertaUsina;
-                    boxAlerta.classList.remove('hidden');
-                } else {
-                    boxAlerta.classList.add('hidden');
-                }
-
-                document.getElementById('gridMateriais').innerHTML = `
-                    <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 610W</p><b class="text-sm text-blue-950">${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                    <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor On-Grid ${marca} (${inv} kW)</p><b class="text-sm text-blue-950">${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                    <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b class="text-sm text-blue-950">${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                    <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Cabos Solares CC/CA</p><b class="text-sm text-blue-950">${vCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                    <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">String Box de Proteção</p><b class="text-sm text-blue-950">${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                    <div class="card-kit"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Engenharia e Homologação</p><b class="text-sm text-blue-950">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
-                `;
-
-                let finanHTML = '';
-                [24, 36, 48, 60].forEach(m => {
-                    let taxa = 0.021;
-                    let pmt = (preco * 1.05) * ( (taxa * Math.pow(1+taxa, m)) / (Math.pow(1+taxa, m) - 1) );
-                    let custoSemSolarPrazo = (fatura * m) * 1.15;
-                    
-                    finanHTML += `
-                        <div class="bg-white p-2.5 rounded-2xl border-2 border-blue-100 shadow-md">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-[11px] font-black text-blue-900 uppercase italic">${m}x FINANCIADO:</span>
-                                <span class="text-xs font-black text-blue-700">${pmt.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}/mês</span>
-                            </div>
-                            <div class="bg-amber-50 p-1.5 rounded-xl border border-amber-200 flex justify-between items-center">
-                                <span class="text-[8.5px] font-black text-amber-900 uppercase italic">Custo sem Solar (${m}m):</span>
-                                <b class="text-[11px] font-black text-amber-700">${custoSemSolarPrazo.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b>
-                            </div>
-                        </div>`;
-                });
-                document.getElementById('resFinan').innerHTML = finanHTML;
-                document.getElementById('renderArea').classList.remove('hidden');
-            } catch (err) {
-                console.error("Erro ao gerar proposta:", err);
-                alert("Ocorreu um erro ao gerar a proposta. Verifique se todos os campos numéricos foram preenchidos corretamente.");
+            if(!fatura || isNaN(fatura) || fatura <= 0) {
+                alert("Vagner, por favor preencha o valor da fatura atual!");
+                return;
             }
-        }
 
-        // Associa o evento de clique via script para garantir funcionamento total
-        document.getElementById('btnGerar').addEventListener('click', gerarProposta);
+            const TARIFA = 1.42;
+            const kwhTotal = (!inputConsumo || isNaN(inputConsumo)) ? (fatura / TARIFA) : inputConsumo;
+
+            let p = Math.ceil((kwhTotal / 30) / 2.15);
+            if (fatura >= 1000 && p < 16) p = 16; 
+
+            const areaTotalM2 = (p * 2.30 * 1.15).toFixed(1);
+
+            const PRECO_BASE_HASTA_10 = 1471.50; 
+            const PRECO_ADICIONAL_PLACA = 1308.00; 
+
+            let precoCalculado = 0;
+            if (fatura > 9000) {
+                precoCalculado = p * 1286.20;
+            } else if (fatura > 5600) {
+                precoCalculado = p * 1253.50;
+            } else if (p > 10) {
+                precoCalculado = (10 * PRECO_BASE_HASTA_10) + ((p - 10) * PRECO_ADICIONAL_PLACA);
+            } else {
+                precoCalculado = p * PRECO_BASE_HASTA_10;
+            }
+
+            if (fatura > 9000) {
+                precoCalculado = precoCalculado * 0.95;
+            }
+
+            const preco = (inputValorKit && !isNaN(inputValorKit) && inputValorKit > 0) ? inputValorKit : precoCalculado;
+
+            let inv = Math.round((p * 610) / 1000);
+            let alertaUsina = "";
+
+            if ((p >= 128 && p <= 175) || (fatura >= 10100 && fatura <= 13800)) {
+                inv = 75;
+            } else if (p > 175 || fatura > 13800) {
+                alertaUsina = "Atenção: Usinas com inversores acima de 75 kW precisam estar enquadradas na Classe B Optante ou em outro modelo de compensação de energia injetada.";
+            }
+
+            const ger = ((p * 610 * 4.5 * 30) / 1000) * 0.80;
+
+            const novaFaturaEstimada = (kwhTotal * 0.58) * 0.56;
+            const econMensal = fatura - novaFaturaEstimada;
+
+            const economiaVistaAnual = econMensal * 12;
+            const economiaVista4Anos = econMensal * 48;
+
+            const taxaJuros = 0.021;
+            const valorFinanciado = preco * 1.05;
+            const parcela48x = valorFinanciado * ((taxaJuros * Math.pow(1 + taxaJuros, 48)) / (Math.pow(1 + taxaJuros, 48) - 1));
+
+            const custoMensalFinanciado = parcela48x + novaFaturaEstimada;
+            const diferencaMensalFinanciamento = fatura - custoMensalFinanciado;
+            const economiaFinanciada4Anos = diferencaMensalFinanciamento * 48;
+
+            const custoSemSolarReajuste = (fatura * 48) * 1.15;
+
+            const potKwp = (p * 610 / 1000).toFixed(2);
+
+            const vPaineis = preco * 0.35;
+            const vInversor = preco * 0.25;
+            const vEstrutura = preco * 0.10;
+            const vCabos = preco * 0.05;
+            const vStringbox = preco * 0.10;
+            const vEngenharia = preco * 0.15;
+
+            document.getElementById('resNome').innerText = (nome || "Cliente Nortbras").toUpperCase();
+            document.getElementById('resCpf').innerText = "CPF/CNPJ: " + (cpf || "Não Informado");
+            document.getElementById('resEndereco').innerText = "Endereço: " + (endereco || "Não Informado");
+            document.getElementById('assNome').innerText = (nome || "CLIENTE").toUpperCase();
+            document.getElementById('resVendedor').innerText = (vendedor || "Nortbras Energia").toUpperCase();
+            document.getElementById('resConsumo').innerText = Math.round(kwhTotal) + " kWh";
+            document.getElementById('resPot').innerText = potKwp + " kWp";
+            document.getElementById('resGerCapa').innerText = Math.round(ger) + " kWh";
+            document.getElementById('resArea').innerText = areaTotalM2 + " m²";
+            document.getElementById('resTotal').innerText = preco.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+            document.getElementById('resNovaFatura').innerText = novaFaturaEstimada.toLocaleString('pt-BR', {style:'currency', currency:'BRL'}) + " / mês";
+            
+            document.getElementById('resEcoVistaAnual').innerText = economiaVistaAnual.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+            document.getElementById('resEcoVista4Anos').innerText = economiaVista4Anos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+            document.getElementById('resEcoFinanc4Anos').innerText = economiaFinanciada4Anos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+            document.getElementById('resCustoSemSolarReajuste').innerText = custoSemSolarReajuste.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+
+            const boxAlerta = document.getElementById('alertaUsinaBox');
+            if(alertaUsina) {
+                boxAlerta.innerText = alertaUsina;
+                boxAlerta.classList.remove('hidden');
+            } else {
+                boxAlerta.classList.add('hidden');
+            }
+
+            document.getElementById('gridMateriais').innerHTML = `
+                <div class="card-kit"><img src="painel.jpeg.jpeg.jpeg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">${p}x Monocristalinos 610W</p><b class="text-sm text-blue-950">${vPaineis.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="${marca}.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Inversor On-Grid ${marca} (${inv} kW)</p><b class="text-sm text-blue-950">${vInversor.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="estrutura.webp.webp" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Estrutura Alumínio</p><b class="text-sm text-blue-950">${vEstrutura.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="cabos.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Cabos Solares CC/CA</p><b class="text-sm text-blue-950">${vCabos.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="stringbox.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.ptplaceholder.com/80'"><p class="text-xs font-bold uppercase italic">String Box de Proteção</p><b class="text-sm text-blue-950">${vStringbox.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+                <div class="card-kit"><img src="instalacao.jpg.jpg.jpg" class="img-kit" onerror="this.src='https://via.placeholder.com/80'"><p class="text-xs font-bold uppercase italic">Engenharia e Homologação</p><b class="text-sm text-blue-950">${vEngenharia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b></div>
+            `;
+
+            let finanHTML = '';
+            [24, 36, 48, 60].forEach(m => {
+                let taxa = 0.021;
+                let pmt = (preco * 1.05) * ( (taxa * Math.pow(1+taxa, m)) / (Math.pow(1+taxa, m) - 1) );
+                let custoSemSolarPrazo = (fatura * m) * 1.15;
+                
+                finanHTML += `
+                    <div class="bg-white p-2.5 rounded-2xl border-2 border-blue-100 shadow-md">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[11px] font-black text-blue-900 uppercase italic">${m}x FINANCIADO:</span>
+                            <span class="text-xs font-black text-blue-700">${pmt.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}/mês</span>
+                        </div>
+                        <div class="bg-amber-50 p-1.5 rounded-xl border border-amber-200 flex justify-between items-center">
+                            <span class="text-[8.5px] font-black text-amber-900 uppercase italic">Custo sem Solar (${m}m):</span>
+                            <b class="text-[11px] font-black text-amber-700">${custoSemSolarPrazo.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</b>
+                        </div>
+                    </div>`;
+            });
+            document.getElementById('resFinan').innerHTML = finanHTML;
+            document.getElementById('renderArea').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
